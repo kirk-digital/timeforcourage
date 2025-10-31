@@ -21,12 +21,12 @@ body {
 
 /* Navbar */
 .navbar {
-  background: rgba(255,255,255,0.95);
+  background: rgba(255, 255, 255, 0.95);
   position: fixed;
   top: 0;
   width: 100%;
   padding: 1.2rem 0;
-  box-shadow: 0 1px 10px rgba(0,0,0,0.05);
+  box-shadow: 0 1px 10px rgba(0, 0, 0, 0.05);
   z-index: 100;
 }
 
@@ -73,7 +73,7 @@ body {
 .overlay {
   position: absolute;
   inset: 0;
-  background: rgba(0,0,0,0.4);
+  background: rgba(0, 0, 0, 0.4);
 }
 
 .hero-text {
@@ -122,7 +122,7 @@ body {
   border-radius: 8px;
   object-fit: cover;
   margin-left: 2.5rem;
-  box-shadow: 0 5px 12px rgba(0,0,0,0.1);
+  box-shadow: 0 5px 12px rgba(0, 0, 0, 0.1);
 }
 
 /* Services */
@@ -147,7 +147,7 @@ body {
   background: white;
   padding: 2rem;
   border-radius: 16px;
-  box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
   transition: transform 0.3s ease;
 }
 
@@ -168,7 +168,7 @@ body {
   border-radius: 12px;
   max-width: 600px;
   margin: 2rem auto;
-  box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
 }
 
 /* Contact */
@@ -186,7 +186,8 @@ form {
   margin: 2rem auto;
 }
 
-input, textarea {
+input,
+textarea {
   padding: 0.8rem;
   border: 1px solid #ddd;
   border-radius: 8px;
@@ -254,7 +255,96 @@ footer p {
   margin: 0;
 }
 
+/* ===== Cookie Banner ===== */
+.cookie-banner {
+  position: fixed;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(255, 255, 255, 0.97);
+  border: 1px solid #ddd;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  padding: 1rem 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem; /* ✅ adds space between text and button */
+  width: 90%;
+  max-width: 600px;
+  z-index: 1000;
+  font-size: 0.95rem;
+  flex-wrap: wrap; /* ✅ prevents overflow on small screens */
+}
 
+.cookie-banner p {
+  margin: 0;
+  color: #333;
+  flex: 1 1 auto;
+  min-width: 200px;
+}
+
+.cookie-banner a {
+  color: var(--primary);
+  text-decoration: underline;
+  margin-left: 6px; /* ✅ slight spacing between sentence and link */
+}
+
+.cookie-banner .btn.small {
+  font-size: 0.9rem;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  background-color: var(--primary);
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  white-space: nowrap; /* ✅ prevents button text wrapping */
+}
+
+.cookie-banner .btn.small:hover {
+  background-color: #916949;
+}
+
+/* ===== Privacy Policy Page ===== */
+.content-section {
+  padding: 6rem 0 4rem;
+  background-color: #fafafa;
+}
+
+.content-section .container {
+  max-width: 800px;
+  margin: 0 auto;
+  background: #fff;
+  padding: 2rem 3rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.content-section h1 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  color: var(--primary);
+}
+
+.content-section h2 {
+  margin-top: 2rem;
+  color: #333;
+}
+
+.content-section p,
+.content-section ul {
+  line-height: 1.7;
+  color: #555;
+}
+
+.content-section ul {
+  padding-left: 1.2rem;
+}
+
+.content-section a {
+  color: var(--primary);
+  text-decoration: underline;
+}
 
 @media (max-width: 768px) {
   .about {

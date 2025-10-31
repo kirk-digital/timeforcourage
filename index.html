@@ -1,102 +1,138 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Time For Courage | Therapy & Coaching</title>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Time For Courage | Therapy & Coaching</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Poppins:wght@300;400;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    />
+  </head>
+  <body>
+    <!-- Header -->
+    <header class="navbar">
+      <div class="container">
+        <div class="logo">Time For Courage</div>
+        <nav>
+          <ul class="nav-links">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
 
-</head>
-<body>
-  <!-- Header -->
-  <header class="navbar">
-    <div class="container">
-      <div class="logo">Time For Courage</div>
-      <nav>
-        <ul class="nav-links">
-          <li><a href="#home">Home</a></li> 
-          <li><a href="#about">About</a></li>
-          <li><a href="#services">Services</a></li>
-          <li><a href="#contact">Contact</a></li>
-        </ul>
-      </nav>
-    </div>
-  </header>
+    <!-- Hero -->
+    <section id="home" class="hero">
+      <div class="overlay"></div>
+      <div class="hero-text">
+        <h1>Find Clarity, Confidence & Calm</h1>
+        <p>Therapy & Coaching with <strong>Time For Courage</strong></p>
+        <a href="#contact" class="btn">Book a Free Call</a>
+      </div>
+    </section>
 
-  <!-- Hero -->
-  <section id="home" class="hero">
-    <div class="overlay"></div>
-    <div class="hero-text">
-      <h1>Find Clarity, Confidence & Calm</h1>
-      <p>Therapy & Coaching with <strong>Time For Courage</strong></p>
-      <a href="#contact" class="btn">Book a Free Call</a>
-    </div>
-  </section>
+    <!-- About -->
+    <section id="about" class="about container">
+      <div class="about-text">
+        <h2>About Me</h2>
+        <p>
+          Hi, my name is Donna. I’m a qualified therapist and certified coach
+          helping individuals navigate life transitions, anxiety, and personal
+          growth. My approach blends psychology, compassion, and practical
+          coaching tools to help you rediscover balance and purpose.
+        </p>
+      </div>
+      <img
+        src="images/56DCDB21-4B73-4E15-816B-32AABAFD0B18_4_5005_c.jpeg"
+        alt="Your portrait"
+        class="about-img"
+      />
+    </section>
 
-  <!-- About -->
-  <section id="about" class="about container">
-    <div class="about-text">
-      <h2>About Me</h2>
-      <p>Hi, my name is Donna. I’m a qualified therapist and certified coach helping individuals navigate life transitions, anxiety, and personal growth. My approach blends psychology, compassion, and practical coaching tools to help you rediscover balance and purpose.</p>
-    </div>
-    <img src="images/56DCDB21-4B73-4E15-816B-32AABAFD0B18_4_5005_c.jpeg" alt="Your portrait" class="about-img" />
-  </section>
-
-  <!-- Services -->
-  <section id="services" class="services">
-    <div class="container">
-      <h2>How I Can Help</h2>
-      <div class="grid">
-        <div class="card">
-          <h3>Therapy</h3>
-          <p>Supportive 1:1 sessions to help you understand, heal, and grow.</p>
-        </div>
-        <div class="card">
-          <h3>Coaching</h3>
-          <p>Goal-focused sessions to help you move forward with clarity.</p>
-        </div>
-        <div class="card">
-          <h3>Workshops</h3>
-          <p>Empowering group sessions for mindset, resilience, and leadership.</p>
+    <!-- Services -->
+    <section id="services" class="services">
+      <div class="container">
+        <h2>How I Can Help</h2>
+        <div class="grid">
+          <div class="card">
+            <h3>Therapy</h3>
+            <p>
+              Supportive 1:1 sessions to help you understand, heal, and grow.
+            </p>
+          </div>
+          <div class="card">
+            <h3>Coaching</h3>
+            <p>Goal-focused sessions to help you move forward with clarity.</p>
+          </div>
+          <div class="card">
+            <h3>Workshops</h3>
+            <p>
+              Empowering group sessions for mindset, resilience, and leadership.
+            </p>
+          </div>
         </div>
       </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section id="testimonials" class="testimonials container">
+      <h2>Client Stories</h2>
+      <div class="testimonial-card">
+        <p>
+          “Working with Donna has helped me feel confident and grounded again.
+          Her sessions are gentle yet deeply transformative.”
+        </p>
+        <span>– Sarah, London</span>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact" class="contact">
+      <div class="container">
+        <h2>Let's Connect</h2>
+        <p>Book a free 15-minute discovery call or send me a message below.</p>
+        <form>
+          <input type="text" placeholder="Your Name" required />
+          <input type="email" placeholder="Your Email" required />
+          <textarea placeholder="Your Message" required></textarea>
+          <button type="submit" class="btn">Send Message</button>
+        </form>
+      </div>
+    </section>
+
+    <footer>
+      <div class="socials">
+        <a href="https://www.instagram.com/yourprofile" target="_blank"
+          ><i class="fab fa-instagram"></i
+        ></a>
+        <a href="https://www.linkedin.com/in/yourprofile" target="_blank"
+          ><i class="fab fa-linkedin"></i
+        ></a>
+        <a href="https://www.facebook.com/yourprofile" target="_blank"
+          ><i class="fab fa-facebook"></i
+        ></a>
+      </div>
+      <p>© 2025 Time For Courage | Therapy & Coaching</p>
+    </footer>
+
+    <script src="script.js"></script>
+
+    <!-- Cookie Consent Banner -->
+    <div id="cookie-banner" class="cookie-banner">
+      <p>
+        This website uses cookies to ensure you get the best experience.
+        <a href="privacy.html" target="_blank">Learn more</a>
+      </p>
+      <button id="accept-cookies" class="btn small">Got it</button>
     </div>
-  </section>
-
-  <!-- Testimonials -->
-  <section id="testimonials" class="testimonials container">
-    <h2>Client Stories</h2>
-    <div class="testimonial-card">
-      <p>“Working with Donna has helped me feel confident and grounded again. Her sessions are gentle yet deeply transformative.”</p>
-      <span>– Sarah, London</span>
-    </div>
-  </section>
-
-  <!-- Contact -->
-  <section id="contact" class="contact">
-    <div class="container">
-      <h2>Let's Connect</h2>
-      <p>Book a free 15-minute discovery call or send me a message below.</p>
-      <form>
-        <input type="text" placeholder="Your Name" required />
-        <input type="email" placeholder="Your Email" required />
-        <textarea placeholder="Your Message" required></textarea>
-        <button type="submit" class="btn">Send Message</button>
-      </form>
-    </div>
-  </section>
-
-  <footer>
-    <div class="socials">
-    <a href="https://www.instagram.com/yourprofile" target="_blank"><i class="fab fa-instagram"></i></a>
-    <a href="https://www.linkedin.com/in/yourprofile" target="_blank"><i class="fab fa-linkedin"></i></a>
-    <a href="https://www.facebook.com/yourprofile" target="_blank"><i class="fab fa-facebook"></i></a>
-  </div>
-    <p>© 2025 Time For Courage | Therapy & Coaching</p>
-  </footer>
-
-  <script src="script.js"></script>
-</body>
+  </body>
 </html>
