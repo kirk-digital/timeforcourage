@@ -24,3 +24,13 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 });
+
+// ===== Phone number validation =====
+document.getElementById("contact").addEventListener("submit", (e) => {
+  const phone = e.target.phone.value.trim();
+  const phonePattern = /^[0-9+\-\s()]{7,}$/;
+  if (!phonePattern.test(phone)) {
+    e.preventDefault();
+    alert("Please enter a valid phone number.");
+  }
+});
