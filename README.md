@@ -1,93 +1,262 @@
-# time_for_courage
+# Time For Courage - Counselling & Life Coaching Website
 
+A modern, responsive website for a UK-based counselling and life coaching business called Time For Courage. Built with HTML, CSS, JavaScript, and PHP for the contact form handler.
 
+## Project Overview
 
-## Getting started
+This is a static website project with a simple PHP backend for handling contact form submissions. The design follows a calm, professional aesthetic suitable for a counselling and coaching business, with a warm colour palette and accessible, semantic HTML structure.
 
-To make it easy for you to get started with GitLab, here's a list of recommended next steps.
+## Features
 
-Already a pro? Just edit this README.md and make it your own. Want to make it easy? [Use the template at the bottom](#editing-this-readme)!
+- **Modern, responsive design** - Works seamlessly on desktop, tablet, and mobile devices
+- **Accessible markup** - Semantic HTML5, proper labels, ARIA attributes
+- **Contact form** - PHP handler with input sanitization and validation
+- **Cookie consent banner** - GDPR-compliant cookie consent with localStorage
+- **Smooth scrolling** - Enhanced navigation experience
+- **SEO optimised** - Meta descriptions on all pages
+- **Font Awesome icons** - Social media icons (Instagram, WhatsApp, YouTube)
 
-## Add your files
-
-- [ ] [Create](https://docs.gitlab.com/ee/user/project/repository/web_editor.html#create-a-file) or [upload](https://docs.gitlab.com/ee/user/project/repository/web_editor.html#upload-a-file) files
-- [ ] [Add files using the command line](https://docs.gitlab.com/topics/git/add_files/#add-files-to-a-git-repository) or push an existing Git repository with the following command:
+## Project Structure
 
 ```
-cd existing_repo
-git remote add origin http://192.168.1.51:7000/home_lab/time_for_courage.git
-git branch -M main
-git push -uf origin main
+time_for_courage/
+├── index.html              # Homepage
+├── about-me.html           # About page
+├── counselling.html        # Counselling service page
+├── coaching.html           # Life coaching service page
+├── workshops.html          # Workshops service page
+├── privacy.html            # Privacy & Cookie Policy
+├── send-mail.php           # PHP contact form handler
+├── style.css               # Main stylesheet
+├── script.js               # JavaScript functionality
+├── images/                 # Image assets
+│   ├── NewLogo.svg         # Main logo
+│   └── profile_photo.jpg   # Profile photo
+└── README.md               # This file
 ```
 
-## Integrate with your tools
+## Design Specifications
 
-- [ ] [Set up project integrations](http://192.168.1.51:7000/home_lab/time_for_courage/-/settings/integrations)
+### Colours
+- Background: `#fffdfb` (warm off-white)
+- Text: `#222` (dark grey)
+- Primary: `#a87d5a` (warm brown)
+- Accent: `#f2ebe3` (soft beige)
 
-## Collaborate with your team
+### Typography
+- Headings: **Playfair Display** (serif)
+- Body text: **Poppins** (sans-serif)
 
-- [ ] [Invite team members and collaborators](https://docs.gitlab.com/ee/user/project/members/)
-- [ ] [Create a new merge request](https://docs.gitlab.com/ee/user/project/merge_requests/creating_merge_requests.html)
-- [ ] [Automatically close issues from merge requests](https://docs.gitlab.com/ee/user/project/issues/managing_issues.html#closing-issues-automatically)
-- [ ] [Enable merge request approvals](https://docs.gitlab.com/ee/user/project/merge_requests/approvals/)
-- [ ] [Set auto-merge](https://docs.gitlab.com/user/project/merge_requests/auto_merge/)
+### Components
+- **Buttons**: Rounded pill shape (`border-radius: 30px`), primary colour background
+- **Cards**: White background with subtle shadow, hover lift effect
+- **Navbar**: Fixed at top, 80px height, semi-transparent with blur effect
+- **Hero**: Full viewport height on homepage, smaller sub-hero on other pages
 
-## Test and Deploy
+## Getting Started
 
-Use the built-in continuous integration in GitLab.
+### Prerequisites
 
-- [ ] [Get started with GitLab CI/CD](https://docs.gitlab.com/ee/ci/quick_start/)
-- [ ] [Analyze your code for known vulnerabilities with Static Application Security Testing (SAST)](https://docs.gitlab.com/ee/user/application_security/sast/)
-- [ ] [Deploy to Kubernetes, Amazon EC2, or Amazon ECS using Auto Deploy](https://docs.gitlab.com/ee/topics/autodevops/requirements.html)
-- [ ] [Use pull-based deployments for improved Kubernetes management](https://docs.gitlab.com/ee/user/clusters/agent/)
-- [ ] [Set up protected environments](https://docs.gitlab.com/ee/ci/environments/protected_environments.html)
+- PHP 7.0 or higher (for contact form)
+- A web server (Apache/Nginx) or PHP's built-in server for local development
 
-***
+### Local Development
 
-# Editing this README
+1. **Clone or download this repository** to your local machine
 
-When you're ready to make this README your own, just edit this file and use the handy template below (or feel free to structure it however you want - this is just a starting point!). Thanks to [makeareadme.com](https://www.makeareadme.com/) for this template.
+2. **Navigate to the project directory**:
+   ```bash
+   cd time_for_courage
+   ```
 
-## Suggestions for a good README
+3. **Start PHP's built-in development server**:
+   ```bash
+   php -S localhost:8000
+   ```
 
-Every project is different, so consider which of these sections apply to yours. The sections used in the template are suggestions for most open source projects. Also keep in mind that while a README can be too long and detailed, too long is better than too short. If you think your README is too long, consider utilizing another form of documentation rather than cutting out information.
+4. **Open your browser** and navigate to:
+   ```
+   http://localhost:8000
+   ```
 
-## Name
-Choose a self-explaining name for your project.
+### Important Notes for Local Development
 
-## Description
-Let people know what your project can do specifically. Provide context and add a link to any reference visitors might be unfamiliar with. A list of Features or a Background subsection can also be added here. If there are alternatives to your project, this is a good place to list differentiating factors.
+- **PHP mail() function**: On local development, PHP's `mail()` function may not work unless you have a local mail server (MTA) configured. The contact form will submit, but emails may not be sent.
 
-## Badges
-On some READMEs, you may see small images that convey metadata, such as whether or not all the tests are passing for the project. You can use Shields to add some to your README. Many services also have instructions for adding a badge.
+  **Options for testing locally**:
+  - Use **MailHog** or similar local mail testing tool
+  - Configure your local environment to send via SMTP
+  - Test the form submission flow and check server logs
+  - For production deployment, most hosting providers have mail() configured
 
-## Visuals
-Depending on what you are making, it can be a good idea to include screenshots or even a video (you'll frequently see GIFs rather than actual videos). Tools like ttygif can help, but check out Asciinema for a more sophisticated method.
+### Configuration
 
-## Installation
-Within a particular ecosystem, there may be a common way of installing things, such as using Yarn, NuGet, or Homebrew. However, consider the possibility that whoever is reading your README is a novice and would like more guidance. Listing specific steps helps remove ambiguity and gets people to using your project as quickly as possible. If it only runs in a specific context like a particular programming language version or operating system or has dependencies that have to be installed manually, also add a Requirements subsection.
+Before deploying, update the following:
 
-## Usage
-Use examples liberally, and show the expected output if you can. It's helpful to have inline the smallest example of usage that you can demonstrate, while providing links to more sophisticated examples if they are too long to reasonably include in the README.
+1. **Email Address** (`send-mail.php`):
+   - Open `send-mail.php`
+   - Replace `YOUR_EMAIL@example.com` with your actual email address (line 16)
+
+2. **Social Media Links** (all HTML pages):
+   - Update Instagram, WhatsApp, and YouTube links in the footer
+   - Replace placeholders like `YOURUSERNAME`, `YOURNUMBER`, `YOURCHANNEL`
+
+3. **Logo and Images**:
+   - Ensure `images/NewLogo.svg` exists and is properly referenced
+   - Ensure `images/profile_photo.jpg` exists and is properly referenced
+
+## Deployment
+
+### Production Deployment
+
+1. **Upload all files** to your web server (via FTP, SFTP, or git)
+
+2. **Recommended directory structure**:
+   ```
+   /var/www/timeforcourage/  (or your web root)
+   ```
+
+3. **Set proper file permissions**:
+   ```bash
+   chown -R www-data:www-data /var/www/timeforcourage
+   chmod -R 755 /var/www/timeforcourage
+   ```
+
+4. **Configure web server** (if using Apache/Nginx):
+   - Ensure PHP is enabled
+   - Configure document root to point to the project directory
+   - Set up SSL certificate (Let's Encrypt recommended)
+
+5. **Test the contact form**:
+   - Submit a test message
+   - Check that emails are received
+   - Verify error handling works correctly
+
+### SSL/HTTPS Setup (Recommended)
+
+For production, set up SSL/HTTPS using Let's Encrypt:
+
+```bash
+# Example for Apache with Let's Encrypt
+sudo certbot --apache -d yourdomain.com
+```
+
+## Browser Support
+
+- Chrome (latest)
+- Firefox (latest)
+- Safari (latest)
+- Edge (latest)
+- Mobile browsers (iOS Safari, Chrome Mobile)
+
+## Accessibility
+
+This website follows WCAG 2.1 Level AA guidelines:
+- Semantic HTML5 elements
+- Proper heading hierarchy
+- Alt text on all images
+- Form labels with `for` attributes
+- ARIA labels on social links
+- Keyboard navigation support
+- Sufficient colour contrast
+
+## Features in Detail
+
+### Contact Form
+
+The contact form includes:
+- Required fields: Name, Email, Phone, Message
+- HTML5 validation
+- PHP sanitization and validation
+- Email notification on submission
+- Success/error message handling
+- Client-side and server-side validation
+
+### Cookie Consent
+
+- Cookie consent banner appears on first visit
+- User preference stored in localStorage
+- GDPR-compliant implementation
+- Link to privacy policy
+
+### Smooth Scrolling
+
+- All anchor links (#) use smooth scroll
+- Accounts for fixed navbar height
+- Works across all pages
+
+## Troubleshooting
+
+### Contact form not sending emails
+
+1. **Check PHP mail() configuration**:
+   - Verify `sendmail_path` in `php.ini`
+   - Check server logs for errors
+   - Test mail() function with a simple script
+
+2. **Verify email address**:
+   - Ensure correct email in `send-mail.php`
+   - Check spam/junk folders
+
+3. **For production hosting**:
+   - Many shared hosts require SMTP configuration
+   - Consider using PHPMailer or similar library for SMTP support
+
+### Images not displaying
+
+- Check file paths (case-sensitive on Linux)
+- Verify image files exist in `images/` directory
+- Check file permissions (644 for files, 755 for directories)
+
+### Styling issues
+
+- Clear browser cache
+- Verify `style.css` is linked correctly
+- Check browser console for CSS errors
+- Ensure Google Fonts are loading
+
+## Customisation
+
+### Adding New Pages
+
+1. Copy an existing page (e.g., `counselling.html`)
+2. Update content and meta tags
+3. Add navigation link in header
+4. Maintain consistent styling and structure
+
+### Changing Colours
+
+Edit CSS variables in `style.css`:
+```css
+:root {
+  --bg: #fffdfb;
+  --text: #222;
+  --primary: #a87d5a;
+  --accent: #f2ebe3;
+}
+```
+
+### Modifying Fonts
+
+Update Google Fonts link in HTML `<head>` and CSS font-family declarations.
 
 ## Support
-Tell people where they can go to for help. It can be any combination of an issue tracker, a chat room, an email address, etc.
 
-## Roadmap
-If you have ideas for releases in the future, it is a good idea to list them in the README.
-
-## Contributing
-State if you are open to contributions and what your requirements are for accepting them.
-
-For people who want to make changes to your project, it's helpful to have some documentation on how to get started. Perhaps there is a script that they should run or some environment variables that they need to set. Make these steps explicit. These instructions could also be useful to your future self.
-
-You can also document commands to lint the code or run tests. These steps help to ensure high code quality and reduce the likelihood that the changes inadvertently break something. Having instructions for running tests is especially helpful if it requires external setup, such as starting a Selenium server for testing in a browser.
-
-## Authors and acknowledgment
-Show your appreciation to those who have contributed to the project.
+For issues or questions:
+- Check this README first
+- Review code comments in `send-mail.php` and `script.js`
+- Test in different browsers and devices
 
 ## License
-For open source projects, say how it is licensed.
 
-## Project status
-If you have run out of energy or time for your project, put a note at the top of the README saying that development has slowed down or stopped completely. Someone may choose to fork your project or volunteer to step in as a maintainer or owner, allowing your project to keep going. You can also make an explicit request for maintainers.
+This project is proprietary and confidential. All rights reserved by Time For Courage.
+
+## Credits
+
+- **Fonts**: Google Fonts (Playfair Display, Poppins)
+- **Icons**: Font Awesome 6.5.0
+- **Design**: Custom design for Time For Courage
+
+---
+
+**Last Updated**: January 2025

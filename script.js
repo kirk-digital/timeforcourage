@@ -1,36 +1,111 @@
 // ===== Smooth Scroll =====
-document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
-  anchor.addEventListener("click", (e) => {
-    e.preventDefault();
-    document.querySelector(anchor.getAttribute("href")).scrollIntoView({
-      behavior: "smooth",
+document.addEventListener("DOMContentLoaded", () => {
+  // Smooth scrolling for anchor links
+  document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+    anchor.addEventListener("click", function (e) {
+      const href = this.getAttribute("href");
+      if (href === "#" || href === "") {
+        return;
+      }
+      
+      const target = document.querySelector(href);
+      if (target) {
+        e.preventDefault();
+        const offsetTop = target.offsetTop - 80; // Account for fixed navbar
+        window.scrollTo({
+          top: offsetTop,
+          behavior: "smooth",
+        });
+      }
     });
   });
-});
 
-// ===== Cookie Banner =====
-document.addEventListener("DOMContentLoaded", () => {
+  // ===== Cookie Banner =====
   const cookieBanner = document.getElementById("cookie-banner");
   const acceptBtn = document.getElementById("accept-cookies");
 
   if (cookieBanner && acceptBtn) {
+    // Check if cookies have been accepted
     if (!localStorage.getItem("cookiesAccepted")) {
       cookieBanner.style.display = "flex";
     }
 
+    // Handle accept button click
     acceptBtn.addEventListener("click", () => {
       localStorage.setItem("cookiesAccepted", "true");
       cookieBanner.style.display = "none";
     });
   }
-});
 
-// ===== Phone number validation =====
-document.getElementById("contact").addEventListener("submit", (e) => {
-  const phone = e.target.phone.value.trim();
-  const phonePattern = /^[0-9+\-\s()]{7,}$/;
-  if (!phonePattern.test(phone)) {
-    e.preventDefault();
-    alert("Please enter a valid phone number.");
+  // ===== Contact Form Handling =====
+  const contactForm = document.getElementById("contact-form");
+  if (contactForm) {
+    // Check for URL parameters to show success/error messages
+    const urlParams = new URLSearchParams(window.location.search);
+    const sent = urlParams.get("sent");
+    const error = urlParams.get("error");
+
+    // Create message container if it doesn't exist
+    let messageContainer = document.querySelector(".form-message");
+    if (!messageContainer && (sent || error)) {
+      messageContainer = document.createElement("div");
+      messageContainer.className = "form-message";
+      contactForm.insertBefore(messageContainer, contactForm.firstChild);
+    }
+
+    if (sent === "1") {
+      if (messageContainer) {
+        messageContainer.className = "form-message success";
+        messageContainer.textContent =
+          "Thank you! Your message has been sent successfully. We'll get back to you soon.";
+      }
+      // Clear URL parameters
+      window.history.replaceState({}, document.title, window.location.pathname + "#contact");
+    }
+
+    if (error) {
+      if (messageContainer) {
+        messageContainer.className = "form-message error";
+        switch (error) {
+          case "missing_fields":
+            messageContainer.textContent =
+              "Please fill in all required fields.";
+            break;
+          case "invalid_email":
+            messageContainer.textContent = "Please enter a valid email address.";
+            break;
+          case "send_failed":
+            messageContainer.textContent =
+              "Sorry, there was an error sending your message. Please try again or contact us directly.";
+            break;
+          default:
+            messageContainer.textContent =
+              "Sorry, there was an error. Please try again.";
+        }
+      }
+      // Clear URL parameters
+      window.history.replaceState({}, document.title, window.location.pathname + "#contact");
+    }
+
+    // Form validation
+    contactForm.addEventListener("submit", (e) => {
+      const phone = contactForm.querySelector('input[name="phone"]').value.trim();
+      const phonePattern = /^[0-9+\-\s()]{7,}$/;
+      
+      if (!phonePattern.test(phone)) {
+        e.preventDefault();
+        if (messageContainer) {
+          messageContainer.className = "form-message error";
+          messageContainer.textContent =
+            "Please enter a valid phone number (at least 7 characters).";
+        } else {
+          alert("Please enter a valid phone number (at least 7 characters).");
+        }
+        return false;
+      }
+    });
   }
+
+  // ===== Mobile Menu Toggle (if needed in future) =====
+  // Add mobile menu toggle logic here if hamburger menu is added
 });

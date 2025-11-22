@@ -3,9 +3,10 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Time For Courage | Therapy & Coaching</title>
+    <meta name="description" content="Time For Courage offers compassionate counselling and empowering coaching to help you unlock your true potential. Professional therapy and life coaching services in the UK." />
+    <title>Time For Courage | Counselling & Life Coaching</title>
     <link
-      href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Poppins:wght@300;400;600&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Lato:wght@300;400;700&display=swap"
       rel="stylesheet"
     />
     <link rel="stylesheet" href="style.css" />
@@ -19,7 +20,9 @@
     <header class="navbar">
       <div class="container">
         <div class="logo">
-          <img src="images/NewLogo.svg" alt="Time For Courage Logo" />
+          <a href="index.html">
+            <img src="images/NewLogo.svg" alt="Time For Courage Logo" />
+          </a>
         </div>
         <nav>
           <ul class="nav-links">
@@ -36,8 +39,8 @@
     <section id="home" class="hero">
       <div class="overlay"></div>
       <div class="hero-text">
-        <h1>Find Clarity, Confidence & Calm</h1>
-        <p>Therapy & Coaching with <strong>Time For Courage</strong></p>
+        <h1>We all have the potential to thrive.</h1>
+        <p>At Time for Courage, we offer compassionate counselling and empowering coaching to help you unlock your true potential. Whether you are facing challenges or seeking personal growth, we're here to support you every step of the way.</p>
         <a href="#contact" class="btn">Book a Free Call</a>
       </div>
     </section>
@@ -58,7 +61,7 @@
         </div>
         <img
           src="images/profile_photo.jpg"
-          alt="Your portrait"
+          alt="Donna - Time For Courage Therapist and Life Coach"
           class="about-img"
         />
       </div>
@@ -73,30 +76,24 @@
       <div class="container">
         <h2>How I Can Help</h2>
         <div class="grid">
-          <div class="card">
-            <a href="counselling.html">
-              <h3>Therapy</h3>
-              <p>Explore your emotions, manage stress, and find inner calm.</p>
-            </a>
-          </div>
-          <div class="card">
-            <a href="coaching.html">
-              <h3>Coaching</h3>
-              <p>
-                Gain clarity, confidence, and direction in your personal or
-                professional life.
-              </p>
-            </a>
-          </div>
-          <div class="card">
-            <a href="workshops.html">
-              <h3>Workshops</h3>
-              <p>
-                Engage in group learning experiences designed for growth and
-                reflection.
-              </p>
-            </a>
-          </div>
+          <a href="counselling.html" class="card">
+            <h3>Therapy</h3>
+            <p>Explore your emotions, manage stress, and find inner calm.</p>
+          </a>
+          <a href="coaching.html" class="card">
+            <h3>Coaching</h3>
+            <p>
+              Gain clarity, confidence, and direction in your personal or
+              professional life.
+            </p>
+          </a>
+          <a href="workshops.html" class="card">
+            <h3>Workshops</h3>
+            <p>
+              Engage in group learning experiences designed for growth and
+              reflection.
+            </p>
+          </a>
         </div>
         <!-- CTA button centered BELOW the grid -->
         <div class="cta-center">
@@ -111,10 +108,14 @@
       <h2>Client Stories</h2>
       <div class="testimonial-card">
         <p>
-          “Working with Donna has helped me feel confident and grounded again.
-          Her sessions are gentle yet deeply transformative.”
+          "Working with Donna has helped me feel confident and grounded again.
+          Her sessions are gentle yet deeply transformative."
         </p>
         <span>– Sarah, London</span>
+      </div>
+      <!-- CTA button centered below testimonials -->
+      <div class="cta-center">
+        <a href="#contact" class="btn">Book a Free Call</a>
       </div>
     </section>
 
@@ -123,23 +124,77 @@
       <div class="container">
         <h2>Let's Connect</h2>
         <p>Book a free 15-minute discovery call or send me a message below.</p>
-        <form>
-          <input type="text" name="name" placeholder="Your Name" required />
-          <input type="email" name="email" placeholder="Your Email" required />
-          <input
-            type="tel"
-            name="phone"
-            placeholder="Your Phone Number"
-            required
-            pattern="[0-9+\-\s()]{7,}"
-          />
-          <textarea
-            name="message"
-            placeholder="Your Message"
-            required
-          ></textarea>
-          <button type="submit">Send</button>
-        </form>
+        <div class="contact-wrapper">
+          <form action="send-mail.php" method="post" id="contact-form">
+            <div class="form-group">
+              <label for="name" class="sr-only">Your Name</label>
+              <input
+                type="text"
+                id="name"
+                name="name"
+                placeholder="Your Name"
+                required
+              />
+            </div>
+            <div class="form-group">
+              <label for="email" class="sr-only">Your Email</label>
+              <input
+                type="email"
+                id="email"
+                name="email"
+                placeholder="Your Email"
+                required
+              />
+            </div>
+            <div class="form-group">
+              <label for="phone" class="sr-only">Your Phone Number</label>
+              <input
+                type="tel"
+                id="phone"
+                name="phone"
+                placeholder="Your Phone Number"
+                required
+                pattern="[0-9+\-\s()]{7,}"
+              />
+            </div>
+            <div class="form-group">
+              <label for="message" class="sr-only">Your Message</label>
+              <textarea
+                id="message"
+                name="message"
+                placeholder="Your Message"
+                required
+              ></textarea>
+            </div>
+            <button type="submit" class="btn">Send Message</button>
+          </form>
+          <div class="contact-sidebar">
+            <div class="contact-card">
+              <h3>Get in Touch</h3>
+              <div class="contact-info">
+                <p><strong>Location</strong></p>
+                <p>Leeds, United Kingdom</p>
+                <p><strong>Email</strong></p>
+                <p><a href="mailto:timeforcourage@gmail.com">timeforcourage@gmail.com</a></p>
+                <p><strong>Availability</strong></p>
+                <p>Monday - Friday: 9am - 6pm</p>
+                <p>Saturday: 10am - 4pm</p>
+              </div>
+            </div>
+            <div class="map-container">
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d37649.09357549004!2d-1.5810681999999998!3d53.800755!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x48795c1e18c5bc7f%3A0x63fe9d4124cd7e09!2sLeeds%2C%20UK!5e0!3m2!1sen!2suk!4v1704123456789!5m2!1sen!2suk"
+                width="100%"
+                height="300"
+                style="border:0; border-radius: 12px;"
+                allowfullscreen=""
+                loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade"
+                title="Location map of Leeds, United Kingdom"
+              ></iframe>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
 
