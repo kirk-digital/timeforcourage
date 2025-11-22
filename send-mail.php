@@ -17,7 +17,7 @@
  */
 
 // Email configuration
-$to = "YOUR_EMAIL@example.com"; // REPLACE THIS WITH YOUR EMAIL ADDRESS
+$to = "timeforcourage@gmail.com"; // REPLACE THIS WITH YOUR EMAIL ADDRESS
 $subject = "New Contact Form Submission - Time For Courage";
 
 // Sanitize and validate input
