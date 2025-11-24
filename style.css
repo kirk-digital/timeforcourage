@@ -251,6 +251,9 @@ h3 {
   color: inherit;
   text-decoration: none;
   height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
 }
 
 .card:hover {
@@ -266,6 +269,20 @@ h3 {
 .card p {
   margin: 0;
   color: var(--text);
+}
+
+/* Card CTA — centered "Learn more" button inside each service card */
+.card-cta {
+  text-align: center;
+  margin-top: 1rem;
+}
+
+/* Slightly smaller/compact variant of .btn for cards (inherits colours) */
+.card-cta .btn {
+  padding: 0.55rem 1.1rem;
+  border-radius: 22px;
+  font-size: 0.95rem;
+  display: inline-block;
 }
 
 /* Testimonials */
@@ -524,6 +541,11 @@ footer p {
   text-align: center;
 }
 
+/* Ready to Begin card - left-align paragraph text */
+.service-cta p {
+  text-align: left;
+}
+
 .service-cta .btn {
   margin-bottom: 1rem;
 }
@@ -694,6 +716,47 @@ footer p {
   background: #f8d7da;
   color: #721c24;
   border: 1px solid #f5c6cb;
+}
+
+/* prevent padding from causing overflow */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+/* ensure images/iframes scale down on small screens */
+img, picture, video, iframe {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* mobile / small-screen fixes */
+@media (max-width: 800px) {
+  .container {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  /* make the services grid wrap and add spacing on small screens */
+  .services .grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+
+  /* make each card full-width and prevent overflow */
+  .services .grid .card {
+    flex: 0 0 100%;
+    max-width: 100%;
+    padding: 1rem;
+    margin: 0;
+    box-sizing: border-box;
+  }
+}
+
+/* safety: remove tiny horizontal scroll from edge cases */
+html, body {
+  overflow-x: hidden;
 }
 
 /* Responsive Design */

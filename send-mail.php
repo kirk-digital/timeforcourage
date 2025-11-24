@@ -13,7 +13,7 @@ if (!$email) {
     exit("Invalid email.");
 }
 
-$to = "timeforcourage@gmail.com";
+$to = "mail.leon.silva@gmail.com";
 $subject = "New Contact Form Message";
 $body = "Name: $name\nEmail: $email\nPhone: $phone\n\nMessage:\n$message";
 $headers = "From: $email";
