@@ -1,25 +1,31 @@
 <?php
-if ($_SERVER["REQUEST_METHOD"] !== "POST") {
-    http_response_code(405);
-    exit("Method not allowed");
-}
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\Exception;
 
-$name = htmlspecialchars($_POST["name"]);
-$email = filter_var($_POST["email"], FILTER_VALIDATE_EMAIL);
-$phone = htmlspecialchars($_POST["phone"]);
-$message = htmlspecialchars($_POST["message"]);
+require '/var/www/timeforcourage.co.uk/PHPMailer/src/Exception.php';
+require '/var/www/timeforcourage.co.uk/PHPMailer/src/PHPMailer.php';
+require '/var/www/timeforcourage.co.uk/PHPMailer/src/SMTP.php';
 
-if (!$email) {
-    exit("Invalid email.");
-}
+$mail = new PHPMailer(true);
 
-$to = "mail.leon.silva@gmail.com";
-$subject = "New Contact Form Message";
-$body = "Name: $name\nEmail: $email\nPhone: $phone\n\nMessage:\n$message";
-$headers = "From: $email";
+try {
+    $mail->isSMTP();
+    $mail->Host = 'smtp.gmail.com';
+    $mail->SMTPAuth = true;
+    $mail->Username = 'mail.leon.silva@gmail.com';
+    $mail->Password = 'ebyt marm mozg cxnx';  
+    $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
+    $mail->Port = 587;
 
-if (mail($to, $subject, $body, $headers)) {
-    echo "Success";
-} else {
-    echo "Email sending failed.";
+    $mail->setFrom('timeforcourage@gmail.com', 'Website Contact Form');
+    $mail->addAddress('timeforcourage@gmail.com');
+
+    $mail->isHTML(true);
+    $mail->Subject = 'New Contact Form Message';
+    $mail->Body = "Name: {$_POST['name']}<br>Email: {$_POST['email']}<br>Phone: {$_POST['phone']}<br>Message:<br>{$_POST['message']}";
+
+    $mail->send();
+    echo 'Message sent';
+} catch (Exception $e) {
+    echo "Error: {$mail->ErrorInfo}";
 }
