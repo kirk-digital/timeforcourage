@@ -1,61 +1,13 @@
 <?php
 /**
- * Contact Form Handler with PHPMailer
+ * Contact Form Handler
  * 
- * This script uses PHPMailer to send emails via Gmail SMTP.
- * 
- * INSTALLATION REQUIRED:
- * On your server, run: composer require phpmailer/phpmailer
- * This will install PHPMailer in a vendor/ directory.
+ * Simple PHP mail() function implementation - no PHPMailer required
+ * This works on most servers without additional dependencies.
  */
 
-// Check if PHPMailer is installed via Composer
-if (file_exists(__DIR__ . '/vendor/autoload.php')) {
-    require __DIR__ . '/vendor/autoload.php';
-} else {
-    // Fallback: try manual installation path
-    if (file_exists(__DIR__ . '/PHPMailer/src/Exception.php')) {
-        require __DIR__ . '/PHPMailer/src/Exception.php';
-        require __DIR__ . '/PHPMailer/src/PHPMailer.php';
-        require __DIR__ . '/PHPMailer/src/SMTP.php';
-    } else {
-        // If PHPMailer not found, use simple mail() function as fallback
-        header('Content-Type: application/json');
-        if ($_SERVER["REQUEST_METHOD"] !== "POST") {
-            http_response_code(405);
-            echo json_encode(['error' => 'Method not allowed']);
-            exit;
-        }
-
-        $name = htmlspecialchars($_POST["name"] ?? '');
-        $email = filter_var($_POST["email"] ?? '', FILTER_VALIDATE_EMAIL);
-        $phone = htmlspecialchars($_POST["phone"] ?? '');
-        $message = htmlspecialchars($_POST["message"] ?? '');
-
-        if (!$email || empty($name) || empty($phone) || empty($message)) {
-            http_response_code(400);
-            echo json_encode(['error' => 'Invalid input']);
-            exit;
-        }
-
-        $to = "timeforcourage@gmail.com";
-        $subject = "New Contact Form Message - Time For Courage";
-        $body = "Name: $name\nEmail: $email\nPhone: $phone\n\nMessage:\n$message";
-        $headers = "From: $email\r\n";
-        $headers .= "Reply-To: $email\r\n";
-        $headers .= "Content-Type: text/plain; charset=UTF-8\r\n";
-
-        if (mail($to, $subject, $body, $headers)) {
-            header("Location: index.html#contact?sent=1");
-        } else {
-            header("Location: index.html#contact?error=send_failed");
-        }
-        exit;
-    }
-}
-
-use PHPMailer\PHPMailer\PHPMailer;
-use PHPMailer\PHPMailer\Exception;
+// Set proper headers
+header('Content-Type: text/html; charset=UTF-8');
 
 // Validate request method
 if ($_SERVER["REQUEST_METHOD"] !== "POST") {
@@ -65,10 +17,10 @@ if ($_SERVER["REQUEST_METHOD"] !== "POST") {
 }
 
 // Sanitize and validate input
-$name = htmlspecialchars($_POST["name"] ?? '', ENT_QUOTES, 'UTF-8');
-$email = filter_var($_POST["email"] ?? '', FILTER_VALIDATE_EMAIL);
-$phone = htmlspecialchars($_POST["phone"] ?? '', ENT_QUOTES, 'UTF-8');
-$message = htmlspecialchars($_POST["message"] ?? '', ENT_QUOTES, 'UTF-8');
+$name = isset($_POST['name']) ? htmlspecialchars(trim($_POST['name']), ENT_QUOTES, 'UTF-8') : '';
+$email = isset($_POST['email']) ? filter_var(trim($_POST['email']), FILTER_VALIDATE_EMAIL) : '';
+$phone = isset($_POST['phone']) ? htmlspecialchars(trim($_POST['phone']), ENT_QUOTES, 'UTF-8') : '';
+$message = isset($_POST['message']) ? htmlspecialchars(trim($_POST['message']), ENT_QUOTES, 'UTF-8') : '';
 
 // Validate required fields
 if (empty($name) || !$email || empty($phone) || empty($message)) {
@@ -76,42 +28,34 @@ if (empty($name) || !$email || empty($phone) || empty($message)) {
     exit;
 }
 
-$mail = new PHPMailer(true);
+// Email configuration
+$to = "hello.timeforcourage@gmail.com";
+$subject = "New Contact Form Message - Time For Courage";
 
-try {
-    // Server settings
-    $mail->isSMTP();
-    $mail->Host = 'smtp.gmail.com';
-    $mail->SMTPAuth = true;
-    $mail->Username = 'hello.timeforcourage@gmail.com';
-    $mail->Password = 'ebyt marm mozg cxnx';  // Gmail App Password
-    $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
-    $mail->Port = 587;
-    $mail->CharSet = 'UTF-8';
+// Prepare email body (plain text version)
+$email_body = "New contact form submission from Time For Courage website:\n\n";
+$email_body .= "Name: " . $name . "\n";
+$email_body .= "Email: " . $email . "\n";
+$email_body .= "Phone: " . $phone . "\n\n";
+$email_body .= "Message:\n" . $message . "\n";
 
-    // Recipients
-    $mail->setFrom('hello.timeforcourage@gmail.com', 'Time For Courage Website');
-    $mail->addAddress('timeforcourage@gmail.com', 'Time For Courage');
-    $mail->addReplyTo($email, $name);
+// Email headers
+$headers = "From: " . $email . "\r\n";
+$headers .= "Reply-To: " . $email . "\r\n";
+$headers .= "X-Mailer: PHP/" . phpversion() . "\r\n";
+$headers .= "Content-Type: text/plain; charset=UTF-8\r\n";
+$headers .= "MIME-Version: 1.0\r\n";
 
-    // Content
-    $mail->isHTML(true);
-    $mail->Subject = 'New Contact Form Message - Time For Courage';
-    $mail->Body = "
-        <h2>New Contact Form Submission</h2>
-        <p><strong>Name:</strong> {$name}</p>
-        <p><strong>Email:</strong> {$email}</p>
-        <p><strong>Phone:</strong> {$phone}</p>
-        <p><strong>Message:</strong></p>
-        <p>" . nl2br($message) . "</p>
-    ";
-    $mail->AltBody = "Name: {$name}\nEmail: {$email}\nPhone: {$phone}\n\nMessage:\n{$message}";
+// Send email
+$mail_sent = @mail($to, $subject, $email_body, $headers);
 
-    $mail->send();
+if ($mail_sent) {
+    // Success - redirect with success message
     header("Location: index.html#contact?sent=1");
     exit;
-} catch (Exception $e) {
-    error_log("PHPMailer Error: {$mail->ErrorInfo}");
+} else {
+    // Failed - redirect with error message
+    error_log("Failed to send email from contact form. Name: $name, Email: $email");
     header("Location: index.html#contact?error=send_failed");
     exit;
 }
