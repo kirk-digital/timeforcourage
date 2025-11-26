@@ -15,7 +15,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $email->addTo("hello.timeforcourage@gmail.com", "Your Name");
     $email->addContent("text/plain", $email_content);
 
-    $sendgrid = new \SendGrid('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');
+    $sendgrid = new \SendGrid('YOUR_SENDGRID_API_KEY');
 
     try {
         $response = $sendgrid->send($email);
