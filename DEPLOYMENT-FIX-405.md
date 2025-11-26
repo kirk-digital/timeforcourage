@@ -85,3 +85,4 @@ After making changes, test the contact form again. The form should now submit su
 - **Nginx cache**: Clear with `sudo nginx -s reload`
 - **File permissions**: Ensure www-data can read the PHP file
 
+
