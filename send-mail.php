@@ -50,7 +50,7 @@ try {
     $mail->Port       = 587;
 
     // From address should be a verified sender or a domain you control
-    $mail->setFrom('hello@timeforcourage.co.uk', 'TimeForCourage Contact');
+    $mail->setFrom('hello.timeforcourage@gmail.com', 'TimeForCourage Contact');
     $mail->addAddress('hello.timeforcourage@gmail.com', 'Site Owner');
 
     $mail->isHTML(false);
