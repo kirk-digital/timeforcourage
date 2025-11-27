@@ -78,3 +78,4 @@ sudo tail -f /var/log/php8.3-fpm.log
 - This often fails due to firewall rules, network issues, or Gmail blocking direct connections
 - PHPMailer uses SMTP authentication to send through Gmail's servers, which is much more reliable
 
+

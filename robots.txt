@@ -1,3 +1,24 @@
+# robots.txt for timeforcourage.co.uk
+
 User-agent: *
 Allow: /
-Sitemap: https://www.timeforcourage.co.uk/sitemap.xml
+
+# Disallow admin and private files
+Disallow: /send-mail.php
+Disallow: /.git/
+Disallow: /vendor/
+Disallow: /PHPMailer/
+
+# Allow important pages
+Allow: /index.html
+Allow: /about-me.html
+Allow: /counselling.html
+Allow: /coaching.html
+Allow: /workshops.html
+Allow: /privacy.html
+
+# Sitemap location
+Sitemap: https://timeforcourage.co.uk/sitemap.xml
+
+# Crawl-delay (optional, remove if not needed)
+# Crawl-delay: 1
