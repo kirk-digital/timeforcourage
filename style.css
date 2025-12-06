@@ -118,7 +118,7 @@ h3 {
 
 /* Hamburger Menu Toggle Button */
 .menu-toggle {
-  display: none; /* hidden on desktop */
+  display: none;
   flex-direction: column;
   background: none;
   border: none;
@@ -146,6 +146,68 @@ h3 {
 
 .menu-toggle.active span:nth-child(3) {
   transform: rotate(-45deg) translate(7px, -7px);
+}
+
+/* Mobile: show hamburger and hide nav by default */
+@media (max-width: 768px) {
+  .menu-toggle {
+    display: flex;
+  }
+
+  .nav-menu {
+    position: absolute;
+    top: 60px;
+    left: 0;
+    right: 0;
+    background: var(--bg);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+    z-index: 100;
+  }
+
+  .nav-menu.active {
+    max-height: 300px;
+  }
+
+  .nav-links {
+    flex-direction: column;
+    padding: 1rem 0;
+  }
+
+  .nav-links li {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+  }
+
+  .nav-links li a {
+    display: block;
+    padding: 1rem;
+  }
+}
+
+/* Desktop: show nav normally, hide hamburger */
+@media (min-width: 769px) {
+  .menu-toggle {
+    display: none !important;
+  }
+
+  .nav-menu {
+    position: static;
+    max-height: none;
+    overflow: visible;
+    background: transparent;
+    border-bottom: none;
+  }
+
+  .nav-links {
+    flex-direction: row;
+    padding: 0;
+  }
+
+  .nav-links li {
+    border-bottom: none;
+  }
 }
 
 /* Hero */

@@ -115,7 +115,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Toggle menu on button click
     if (menuToggle) {
-      menuToggle.addEventListener('click', function() {
+      menuToggle.addEventListener('click', function(e) {
+        e.stopPropagation();
         menuToggle.classList.toggle('active');
         navMenu.classList.toggle('active');
       });
@@ -131,9 +132,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Close menu if user clicks outside
     document.addEventListener('click', function(event) {
-      if (menuToggle && navMenu && !menuToggle.contains(event.target) && !navMenu.contains(event.target)) {
-        menuToggle.classList.remove('active');
-        navMenu.classList.remove('active');
+      if (menuToggle && navMenu) {
+        const isMenuToggle = menuToggle.contains(event.target);
+        const isNavMenu = navMenu.contains(event.target);
+        if (!isMenuToggle && !isNavMenu) {
+          menuToggle.classList.remove('active');
+          navMenu.classList.remove('active');
+        }
       }
     });
   });
