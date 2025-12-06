@@ -107,5 +107,34 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   // ===== Mobile Menu Toggle (if needed in future) =====
-  // Add mobile menu toggle logic here if hamburger menu is added
+  // Toggle hamburger menu on mobile
+  document.addEventListener('DOMContentLoaded', function() {
+    const menuToggle = document.getElementById('menu-toggle');
+    const navMenu = document.getElementById('nav-menu');
+    const navLinks = document.querySelectorAll('.nav-links a');
+
+    // Toggle menu on button click
+    if (menuToggle) {
+      menuToggle.addEventListener('click', function() {
+        menuToggle.classList.toggle('active');
+        navMenu.classList.toggle('active');
+      });
+    }
+
+    // Close menu when a link is clicked
+    navLinks.forEach(link => {
+      link.addEventListener('click', function() {
+        menuToggle.classList.remove('active');
+        navMenu.classList.remove('active');
+      });
+    });
+
+    // Close menu if user clicks outside
+    document.addEventListener('click', function(event) {
+      if (menuToggle && navMenu && !menuToggle.contains(event.target) && !navMenu.contains(event.target)) {
+        menuToggle.classList.remove('active');
+        navMenu.classList.remove('active');
+      }
+    });
+  });
 });
