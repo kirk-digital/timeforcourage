@@ -1,6 +1,5 @@
-// ===== Smooth Scroll =====
 document.addEventListener("DOMContentLoaded", () => {
-  // Smooth scrolling for anchor links
+  // ===== Smooth Scroll =====
   document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
     anchor.addEventListener("click", function (e) {
       const href = this.getAttribute("href");
@@ -106,40 +105,38 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  // ===== Mobile Menu Toggle (if needed in future) =====
-  // Toggle hamburger menu on mobile
-  document.addEventListener('DOMContentLoaded', function() {
-    const menuToggle = document.getElementById('menu-toggle');
-    const navMenu = document.getElementById('nav-menu');
-    const navLinks = document.querySelectorAll('.nav-links a');
+  // ===== Mobile Menu Toggle =====
+  const menuToggle = document.getElementById('menu-toggle');
+  const navMenu = document.getElementById('nav-menu');
+  const navLinks = document.querySelectorAll('.nav-links a');
 
-    // Toggle menu on button click
-    if (menuToggle) {
-      menuToggle.addEventListener('click', function(e) {
-        e.stopPropagation();
-        menuToggle.classList.toggle('active');
-        navMenu.classList.toggle('active');
-      });
-    }
+  // Toggle menu on button click
+  if (menuToggle) {
+    menuToggle.addEventListener('click', function(e) {
+      e.stopPropagation();
+      console.log('Menu toggle clicked'); // debug
+      menuToggle.classList.toggle('active');
+      navMenu.classList.toggle('active');
+    });
+  }
 
-    // Close menu when a link is clicked
-    navLinks.forEach(link => {
-      link.addEventListener('click', function() {
+  // Close menu when a link is clicked
+  navLinks.forEach(link => {
+    link.addEventListener('click', function() {
+      menuToggle.classList.remove('active');
+      navMenu.classList.remove('active');
+    });
+  });
+
+  // Close menu if user clicks outside
+  document.addEventListener('click', function(event) {
+    if (menuToggle && navMenu) {
+      const isMenuToggle = menuToggle.contains(event.target);
+      const isNavMenu = navMenu.contains(event.target);
+      if (!isMenuToggle && !isNavMenu) {
         menuToggle.classList.remove('active');
         navMenu.classList.remove('active');
-      });
-    });
-
-    // Close menu if user clicks outside
-    document.addEventListener('click', function(event) {
-      if (menuToggle && navMenu) {
-        const isMenuToggle = menuToggle.contains(event.target);
-        const isNavMenu = navMenu.contains(event.target);
-        if (!isMenuToggle && !isNavMenu) {
-          menuToggle.classList.remove('active');
-          navMenu.classList.remove('active');
-        }
       }
-    });
+    }
   });
 });
